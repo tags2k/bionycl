@@ -9,16 +9,10 @@ window.bionycl = function(config, p, applyOuter) {
     var commonWords = Array.from(config.commonwords.split(","));
 
     if (applyOuter) {
-        if (config.parastyle1prop) p.style.setProperty(config.parastyle1prop, config.parastyle1value, "important");
-        if (config.parastyle2prop) p.style.setProperty(config.parastyle2prop, config.parastyle2value, "important");
-        if (config.parastyle3prop) p.style.setProperty(config.parastyle3prop, config.parastyle3value, "important");
-        if (config.parastyle4prop) p.style.setProperty(config.parastyle4prop, config.parastyle4value, "important");
-        if (config.parastyle5prop) p.style.setProperty(config.parastyle5prop, config.parastyle5value, "important");
-        if (config.parastyle6prop) p.style.setProperty(config.parastyle6prop, config.parastyle6value, "important");
-        if (config.parastyle7prop) p.style.setProperty(config.parastyle7prop, config.parastyle7value, "important");
-        if (config.parastyle8prop) p.style.setProperty(config.parastyle8prop, config.parastyle8value, "important");
-        if (config.parastyle9prop) p.style.setProperty(config.parastyle9prop, config.parastyle9value, "important");
-        if (config.parastyle10prop) p.style.setProperty(config.parastyle10prop, config.parastyle10value, "important");
+        for (var x = 1; x <= 10; x++) {
+            if (config[`parastyle${x}prop`])
+                p.style.setProperty(config[`parastyle${x}prop`], config[`parastyle${x}value`], "important");
+        }
 
         p.style.setProperty("display", "block");
     }
