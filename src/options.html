@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head><title>Bionycl Options</title></head>
+<body>
+
+<style type="text/css">
+    body {
+        width: 40em;
+    }
+
+    #saveBar {
+        position: fixed;
+        top: 1em;
+        right: 1em;
+    }
+
+    section {
+        margin: 0.25em;
+        padding: 0.5em;
+        background: #f7f8f6;
+    }
+
+    section h3 {
+        margin: 0.5em 0.25em;
+    }
+
+    input[type=text], textarea {
+        padding: 0.25rem 0.5rem;
+        margin: 0 0.2em 0.4em 0;
+        width: 40%;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #b1b1b1;
+        border-radius: 0.25rem;
+        -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+        -webkit-box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+        border-radius: 4px;
+        background: #fff;
+    }
+
+    textarea {
+        font-size: 120%;
+    }
+
+    span.hl {
+        border: 1px solid red;
+        font-weight: bolder;
+        display: inline-block;
+        padding: 4px;
+        color: red;
+        background-color: #ffffff;
+    }
+</style>
+
+<div id="saveBar">
+<button class="save">Save</button>
+</div>
+
+<div style="font-size: 120%;">
+<p id="example"></p>
+</div>
+
+<section>
+<h3>Behaviour</h3>
+<div>
+    Activate automatically? <input type="checkbox" id="auto-speedread"><br />
+    Interval: <input type="text" id="interval" style="width:4em;"> milliseconds<br />
+    <small>How often to poll for new content. 0 for activation on page load only.</small><br /><br />
+    Common words:<br /><textarea style="width: 25em; height: 4em;" id="commonwords"></textarea><br />
+    Ignore common words? <input type="checkbox" id="ignorecommon"><br /><br />
+</div>
+</section>
+
+<section>
+<h3>Algorithm</h3>
+<p>When word is <span class="hl">x</span> letters long, highlight <span class="hl">y</span> number of letters:</p>
+<label>
+    10 or longer
+  <input type="text" id="letters10" style="width: 2em;">
+</label>
+<br />
+<label>
+    9
+  <input type="text" id="letters9" style="width: 2em;">
+</label>
+<br />
+<label>
+    8
+  <input type="text" id="letters8" style="width: 2em;">
+</label>
+<br />
+<label>
+    7
+  <input type="text" id="letters7" style="width: 2em;">
+</label>
+<br />
+<label>
+    6
+    <input type="text" id="letters6" style="width: 2em;">
+    
+</label>
+<br />
+<label>
+    5
+    <input type="text" id="letters5" style="width: 2em;">
+    
+</label>
+<br />
+<label>
+    4
+    <input type="text" id="letters4" style="width: 2em;">
+    
+</label>
+<br />
+<label>
+    3
+    <input type="text" id="letters3" style="width: 2em;">
+    
+</label>
+<br />
+<label>
+    2
+    <input type="text" id="letters2" style="width: 2em;">
+    
+</label>
+<br />
+<label>
+    1
+    <input type="text" id="letters1" style="width: 2em;">
+</label>
+</section>
+
+<section>
+    <h3>Bold CSS</h3>
+    <label>Existing font weight multiplier: <input type="text" id="existingweightmultiplier" /></label><br />
+    <label>Default font weight: <input type="text" id="defaultweight" /></label><br />
+    <label>Extra CSS style: </label><input type="text" id="style">
+</section>
+
+<section>
+    <h3>Paragraph CSS</h3>
+    <input type="text" id="parastyle1prop"> <input type="text" id="parastyle1value"><br />
+    <input type="text" id="parastyle2prop"> <input type="text" id="parastyle2value"><br />
+    <input type="text" id="parastyle3prop"> <input type="text" id="parastyle3value"><br />
+    <input type="text" id="parastyle4prop"> <input type="text" id="parastyle4value"><br />
+    <input type="text" id="parastyle5prop"> <input type="text" id="parastyle5value"><br />
+    <input type="text" id="parastyle6prop"> <input type="text" id="parastyle6value"><br />
+    <input type="text" id="parastyle7prop"> <input type="text" id="parastyle7value"><br />
+    <input type="text" id="parastyle8prop"> <input type="text" id="parastyle8value"><br />
+    <input type="text" id="parastyle9prop"> <input type="text" id="parastyle9value"><br />
+    <input type="text" id="parastyle10prop"> <input type="text" id="parastyle10value">
+</section>
+
+<section>
+    <h3>Site-specific</h3>
+    <input type="text" id="host1" placeholder="https://matchdomain.whatever"> <input type="text" id="host1selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host1forceauto"> Force auto?
+    <input type="checkbox" id="host1ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host1applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host2" placeholder="https://matchdomain.whatever"> <input type="text" id="host2selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host2forceauto"> Force auto?
+    <input type="checkbox" id="host2ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host2applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host3" placeholder="https://matchdomain.whatever"> <input type="text" id="host3selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host3forceauto"> Force auto?
+    <input type="checkbox" id="host3ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host3applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host4" placeholder="https://matchdomain.whatever"> <input type="text" id="host4selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host4forceauto"> Force auto?
+    <input type="checkbox" id="host4ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host4applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host5" placeholder="https://matchdomain.whatever"> <input type="text" id="host5selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host5forceauto"> Force auto?
+    <input type="checkbox" id="host5ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host5applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host6" placeholder="https://matchdomain.whatever"> <input type="text" id="host6selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host6forceauto"> Force auto?
+    <input type="checkbox" id="host6ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host6applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host7" placeholder="https://matchdomain.whatever"> <input type="text" id="host7selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host7forceauto"> Force auto?
+    <input type="checkbox" id="host7ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host7applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host8" placeholder="https://matchdomain.whatever"> <input type="text" id="host8selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host8forceauto"> Force auto?
+    <input type="checkbox" id="host8ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host8applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host9" placeholder="https://matchdomain.whatever"> <input type="text" id="host9selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host9forceauto"> Force auto?
+    <input type="checkbox" id="host9ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host9applyouter"> Apply outer?<br /><hr />
+    <input type="text" id="host10" placeholder="https://matchdomain.whatever"> <input type="text" id="host10selector" placeholder="div.customSelector"><br />
+    <input type="checkbox" id="host10forceauto"> Force auto?
+    <input type="checkbox" id="host10ignoreondemand"> Ignore on-demand?
+    <input type="checkbox" id="host10applyouter"> Apply outer?
+</section>
+
+<script src="common.js"></script>
+<script src="options.js"></script>
+</body>
+</html>
