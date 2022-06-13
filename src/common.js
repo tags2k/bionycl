@@ -70,6 +70,7 @@ window.bionycl = function(config, p, applyOuter) {
                     parentNode.insertBefore(document.createTextNode(word + spaceAfter), node);
                 } else {
                     var b = document.createElement("b");
+                    b.setAttribute("style", config.style);
                     if (b.style["font-weight"]) {
                         var fontWeight = parseFloat(b.style["font-weight"]);
                         b.style["font-weight"] = (fontWeight * config.existingweightmultiplier).toString();
@@ -118,22 +119,22 @@ window.bionyclDefaultConfig = function() {
         auto: true,
         interval: 5000,
         commonwords: 'a,an,as,and,at,be,by,do,for,go,if,in,it,its,is,like,of,on,or,so,to,up',
-        ignorecommon: true,
-        letters1: 0,
-        letters2: 0,
+        ignorecommon: false,
+        letters1: 1,
+        letters2: 1,
         letters3: 1,
-        letters4: 1,
-        letters5: 2,
-        letters6: 2,
-        letters7: 3,
-        letters8: 3,
-        letters9: 4,
-        letters10: 4,
+        letters4: 2,
+        letters5: 3,
+        letters6: 3,
+        letters7: 4,
+        letters8: 4,
+        letters9: 5,
+        letters10: 5,
         existingweightmultiplier: 1.75,
         defaultweight: 750,
         style: '',
         parastyle1prop: 'background',
-        parastyle1value: '#f8f8f8',
+        parastyle1value: '#fcfdfc',
         parastyle2prop: 'padding',
         parastyle2value: '2em',
         parastyle3prop: 'font',
@@ -145,7 +146,7 @@ window.bionyclDefaultConfig = function() {
         parastyle6prop: 'line-height',
         parastyle6value: '2.2em',
         parastyle7prop: 'color',
-        parastyle7value: 'black',
+        parastyle7value: '#636463',
         parastyle8prop: 'font-size',
         parastyle8value: '0.95em',
         parastyle9prop: 'max-width',
@@ -174,6 +175,60 @@ window.bionyclDefaultConfig = function() {
     c['host3ignoreondemand'] = true;
 
     return c;
+};
+
+window.dobionycl = (isAuto) => {
+	var main = document.getElementsByTagName("main")[0];
+	var article = document.getElementsByTagName("article")[0];
+	chrome.storage.sync.get(window.bionyclDefaultConfig(), function(config) {
+		var hostMatch = undefined;
+		for (var x = 1; x <= 10; x++) {
+			if (config[`host${x}`] && config[`host${x}`].length) {
+				if (window.bionyclClickedElement && config[`host${x}ignoreondemand`]) continue;
+
+				if (config[`host${x}`].indexOf(",")) {
+					Array.from(config[`host${x}`].split(",")).forEach(i => {
+						if (window.location.href.indexOf(i) > -1) {
+							hostMatch = x;
+						}
+					});
+				} else if (window.location.origin.indexOf(config[`host${x}`]) > -1) {
+					hostMatch = x;
+				}
+			}
+		}
+
+		if (isAuto && !config.auto)
+		{
+			if (hostMatch === undefined) return;
+			if (!config[`host${hostMatch}forceauto`]) return;
+		}
+
+		var targets = null;
+		
+		if (hostMatch === undefined || !config[`host${hostMatch}selector`]) {
+			targets = Array.from((article ? article : main ? main : document).getElementsByTagName("p"));
+			window.bionyclSourceMainOrArticle = main || article;
+		} else {
+			targets = Array.from(document.querySelectorAll(config[`host${hostMatch}selector`]));
+		}
+
+		targets.forEach(p => {
+			if (!p) return;
+			if (p.classList.contains("___bionycl")) return;
+			if (hostMatch === undefined) {
+				if (p.contentEditable == "true") return;
+			}
+
+			p.classList.add("___bionycl");
+
+			var applyOuter = true;
+			if (hostMatch !== undefined) applyOuter = config[`host${hostMatch}applyouter`];
+			window.bionycl(config, p, applyOuter);
+		});
+
+		window.bionyclClickedElement = undefined;
+	});
 };
 
 document.addEventListener("contextmenu", function(event){

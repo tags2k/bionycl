@@ -21,7 +21,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 	if (info.menuItemId == "bionyclContextMenuPage") {
 		chrome.scripting.executeScript({
 			target: {tabId: tabId, allFrames: true},
-			files: ['content.js', 'forcestart.js']});
+			files: ['forcestart.js']});
 	}
 	if (info.menuItemId == "bionyclContextMenuElement") {
 		chrome.tabs.sendMessage(tabId, "getBioncylClickedElement", {frameId: info.frameId}, data => {
