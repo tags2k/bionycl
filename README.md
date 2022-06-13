@@ -1,5 +1,7 @@
 # Bionycl
-Bionycl is a fully-customisable bionic reading extension for Chrome. Access all the configuration via the Bionycl extension "Options".
+Bionycl is a fully-customisable bionic reading extension for Chrome, written after seeing ["that bionic reading meme, yeah you know the one"](https://www.google.com/search?q=bionic+reading+meme&tbm=isch) and not being satisfied with the configurability of existing extensions.
+
+Access all the configuration via the Bionycl extension "Options".
 
 ![image](https://user-images.githubusercontent.com/43980789/173246564-8e105bdf-0091-47b0-a27c-013dac1316b6.png)
 
@@ -11,21 +13,29 @@ You can also change how often it polls the page for new content - this is useful
 
 ![image](https://user-images.githubusercontent.com/43980789/173246577-139e2c75-db62-4724-afd5-1db49c4d3c9a.png)
 
+If auto is off, then you can manually send a page to Bionycl via the context menu option:
+
+![image](https://user-images.githubusercontent.com/43980789/173313979-f1d33c9b-828a-4b26-8ef0-c5a4bab9709c.png)
+
+If a site-specific selector (see bottom section) is configured for the page you have manually Bionycled, the selector will be used. If you don't want this behaviour and you want Bionycl to approach the page as if it knew nothing about the site, check the "Ignore on-demand" option for the site.
+
 ## Algorithm options
 
-Define the bolding algorithm yourself - the default is shown below which provides a "thin look", but you might want to make it chunkier.
+Define the bolding algorithm yourself - the default is shown below which tries to mimic "that meme everyone saw":
 
-![image](https://user-images.githubusercontent.com/43980789/173246667-28d89dd3-41ca-427f-a795-c4fb535bf030.png)
+![image](https://user-images.githubusercontent.com/43980789/173313360-5b5e7a46-2c35-4396-8ac6-35fd82276449.png)
 
-...versus a more emboldened:
-
-![image](https://user-images.githubusercontent.com/43980789/173246733-f0a04458-6fd5-4cdf-9570-6b1ccf61043d.png)
-
-This can be easily controlled via the Alorithm letters options:
+Using the Algorithm letters options (don't forget to hit Save!), the decision when to bold letters can be modified:
 
 ![image](https://user-images.githubusercontent.com/43980789/173246605-ef53228b-2a01-4cda-b894-558db0a1b929.png)
 
-Don't forget to hit Save!
+This could achieve a "thin look":
+
+![image](https://user-images.githubusercontent.com/43980789/173246667-28d89dd3-41ca-427f-a795-c4fb535bf030.png)
+
+...although you might prefer something a bit more emboldened:
+
+![image](https://user-images.githubusercontent.com/43980789/173313619-c7b46a09-569a-4e7f-a5a8-997df9b6f8b7.png)
 
 ## Bold CSS options
 
