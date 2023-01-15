@@ -1,6 +1,6 @@
-window.bionycl = function(config, p, applyOuter) {};
+window.bionycl = function(config, p, applyOuter, hostMatch) {};
 
-window.bionycl = function(config, p, applyOuter) {
+window.bionycl = function(config, p, applyOuter, hostMatch) {
     var period = ".";
     var comma = ",";
     var colon = ":";
@@ -9,10 +9,27 @@ window.bionycl = function(config, p, applyOuter) {
     var commonWords = Array.from(config.commonwords.split(","));
 
     if (applyOuter) {
+        var additionalStyles = {};
+
         for (var x = 1; x <= 10; x++) {
-            if (config[`parastyle${x}prop`])
+            if (config[`parastyle${x}prop`]) {
+                if (hostMatch) {
+                    for (var y = 1; y <= 10; y++) {
+                        if (config[`host${hostMatch}para${y}prop`]) { // override found
+                            if (config[`parastyle${x}prop`] == config[`host${hostMatch}para${y}prop`]) {
+                                config[`parastyle${x}value`] = config[`host${hostMatch}para${y}value`];
+                            } else {
+                                additionalStyles[config[`host${hostMatch}para${x}prop`]] = config[`host${hostMatch}para${y}value`];
+                            }
+                        }
+                    }
+                }
+
                 p.style.setProperty(config[`parastyle${x}prop`], config[`parastyle${x}value`], "important");
+            }
         }
+
+        Array.from(Object.keys(additionalStyles)).forEach(k => p.style.setProperty(k, additionalStyles[k], "important"));
 
         p.style.setProperty("display", "block");
     }
@@ -108,7 +125,7 @@ window.bionycl = function(config, p, applyOuter) {
         } else {
             var hasBionycls = node && node.querySelector && node.querySelector(".__bionycl");
             if (!hasBionycls) {
-                window.bionycl(config, node, false);
+                window.bionycl(config, node, false, hostMatch);
             }
         }
     });
@@ -161,6 +178,11 @@ window.bionyclDefaultConfig = function() {
         c[`host${x}forceauto`] = false;
         c[`host${x}applyouter`] = false;
         c[`host${x}ignoreondemand`] = false;
+
+        for (var y = 1; y <= 10; y++) {
+            c[`host${x}para${y}prop`] = '';
+            c[`host${x}para${y}value`] = '';
+        }
     }
 
     c['host1'] = 'https://twitter.com';
@@ -224,7 +246,7 @@ window.dobionycl = (isAuto) => {
 
 			var applyOuter = true;
 			if (hostMatch !== undefined) applyOuter = config[`host${hostMatch}applyouter`];
-			window.bionycl(config, p, applyOuter);
+			window.bionycl(config, p, applyOuter, hostMatch);
 		});
 
 		window.bionyclClickedElement = undefined;

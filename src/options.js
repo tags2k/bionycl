@@ -3,7 +3,7 @@ function render_example() {
     var p = document.getElementById("example");
     p.innerText = 'Bionycl is a fully-customisable bionic reading extension for Chrome, and this is an example of a paragraph containing a few sentences, themselves harbouring words. Words will be styled thusly in the manner of your choosing.';
 
-    window.bionycl(config, p, true);
+    window.bionycl(config, p, true, undefined);
 }
 
 function get_options_object() {
@@ -32,6 +32,11 @@ function get_options_object() {
       opts[`host${x}forceauto`] = document.getElementById(`host${x}forceauto`).checked;
       opts[`host${x}ignoreondemand`] = document.getElementById(`host${x}ignoreondemand`).checked;
       opts[`host${x}applyouter`] = document.getElementById(`host${x}applyouter`).checked;
+
+      for (var y = 1; y <= 10; y++) {
+        opts[`host${x}para${y}prop`] = document.getElementById(`host${x}para${y}prop`).value;
+        opts[`host${x}para${y}value`] = document.getElementById(`host${x}para${y}value`).value;
+      }
     }
 
     return opts;
@@ -53,6 +58,37 @@ function save_options(sender) {
   // Restores select box and checkbox state using the preferences
   // stored in chrome.storage.
   function restore_options() {
+
+    var hostOverrideCount = 0;
+    Array.from(document.querySelectorAll(".hostSpecific .hostOverrides")).forEach(h => {
+      hostOverrideCount++;
+      h.style["display"] = "none";
+
+      var title = document.createElement("h5");
+      title.innerText = "> Overrides";
+      h.before(title);
+
+      title.addEventListener("click", e => {
+          h.style["display"] = h.style["display"] == "none" ? "block" : "none";
+      });
+
+      for (var x = 1; x <= 10; x++) {
+        var inputProp = document.createElement("input");
+        inputProp.setAttribute("type", "text");
+        inputProp.setAttribute("id", `host${hostOverrideCount}para${x}prop`);
+        h.appendChild(inputProp);
+
+        h.appendChild(document.createTextNode(" "));
+
+        var inputValue = document.createElement("input");
+        inputValue.setAttribute("type", "text");
+        inputValue.setAttribute("id", `host${hostOverrideCount}para${x}value`);
+        h.appendChild(inputValue);
+
+        h.appendChild(document.createElement("br"));
+      }
+    });
+
     chrome.storage.sync.get(window.bionyclDefaultConfig(), function(config) {
       document.getElementById('auto-speedread').checked = config.auto;
       document.getElementById('interval').value = config.interval;
@@ -84,6 +120,11 @@ function save_options(sender) {
         document.getElementById(`host${x}forceauto`).checked = config[`host${x}forceauto`];
         document.getElementById(`host${x}ignoreondemand`).checked = config[`host${x}ignoreondemand`];
         document.getElementById(`host${x}applyouter`).checked = config[`host${x}applyouter`];
+
+        for (var y = 1; y <= 10; y++) {
+          document.getElementById(`host${x}para${y}prop`).checked = config[`host${x}para${y}prop`];
+          document.getElementById(`host${x}para${y}value`).checked = config[`host${x}para${y}value`];
+        }
       }
 
       document.getElementById('style').addEventListener("keyup", render_example);

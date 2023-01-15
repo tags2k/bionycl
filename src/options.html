@@ -65,6 +65,8 @@
 <button class="save">Save</button>
 </div>
 
+<p><small><a href="https://www.buymeacoffee.com/49XArYz2Dd" target="_blank">Like the plugin enough to buy me a coffee?</a></small></p>
+
 <section>
 <h3>Behaviour</h3>
 <div>
@@ -162,46 +164,77 @@
 
 <section>
     <h3>Site-specific</h3>
-    <input type="text" id="host1" placeholder="https://matchdomain.whatever"> <input type="text" id="host1selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host1forceauto"> Force auto?
-    <input type="checkbox" id="host1ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host1applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host2" placeholder="https://matchdomain.whatever"> <input type="text" id="host2selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host2forceauto"> Force auto?
-    <input type="checkbox" id="host2ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host2applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host3" placeholder="https://matchdomain.whatever"> <input type="text" id="host3selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host3forceauto"> Force auto?
-    <input type="checkbox" id="host3ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host3applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host4" placeholder="https://matchdomain.whatever"> <input type="text" id="host4selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host4forceauto"> Force auto?
-    <input type="checkbox" id="host4ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host4applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host5" placeholder="https://matchdomain.whatever"> <input type="text" id="host5selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host5forceauto"> Force auto?
-    <input type="checkbox" id="host5ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host5applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host6" placeholder="https://matchdomain.whatever"> <input type="text" id="host6selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host6forceauto"> Force auto?
-    <input type="checkbox" id="host6ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host6applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host7" placeholder="https://matchdomain.whatever"> <input type="text" id="host7selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host7forceauto"> Force auto?
-    <input type="checkbox" id="host7ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host7applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host8" placeholder="https://matchdomain.whatever"> <input type="text" id="host8selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host8forceauto"> Force auto?
-    <input type="checkbox" id="host8ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host8applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host9" placeholder="https://matchdomain.whatever"> <input type="text" id="host9selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host9forceauto"> Force auto?
-    <input type="checkbox" id="host9ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host9applyouter"> Apply outer?<br /><hr />
-    <input type="text" id="host10" placeholder="https://matchdomain.whatever"> <input type="text" id="host10selector" placeholder="div.customSelector"><br />
-    <input type="checkbox" id="host10forceauto"> Force auto?
-    <input type="checkbox" id="host10ignoreondemand"> Ignore on-demand?
-    <input type="checkbox" id="host10applyouter"> Apply outer?
+    <div class="hostSpecific">
+        <input type="text" id="host1" placeholder="https://matchdomain.whatever"> <input type="text" id="host1selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host1forceauto"> Force auto?
+        <input type="checkbox" id="host1ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host1applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host2" placeholder="https://matchdomain.whatever"> <input type="text" id="host2selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host2forceauto"> Force auto?
+        <input type="checkbox" id="host2ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host2applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host3" placeholder="https://matchdomain.whatever"> <input type="text" id="host3selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host3forceauto"> Force auto?
+        <input type="checkbox" id="host3ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host3applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host4" placeholder="https://matchdomain.whatever"> <input type="text" id="host4selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host4forceauto"> Force auto?
+        <input type="checkbox" id="host4ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host4applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host5" placeholder="https://matchdomain.whatever"> <input type="text" id="host5selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host5forceauto"> Force auto?
+        <input type="checkbox" id="host5ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host5applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host6" placeholder="https://matchdomain.whatever"> <input type="text" id="host6selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host6forceauto"> Force auto?
+        <input type="checkbox" id="host6ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host6applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host7" placeholder="https://matchdomain.whatever"> <input type="text" id="host7selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host7forceauto"> Force auto?
+        <input type="checkbox" id="host7ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host7applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host8" placeholder="https://matchdomain.whatever"> <input type="text" id="host8selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host8forceauto"> Force auto?
+        <input type="checkbox" id="host8ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host8applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host9" placeholder="https://matchdomain.whatever"> <input type="text" id="host9selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host9forceauto"> Force auto?
+        <input type="checkbox" id="host9ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host9applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div><hr />
+    <div class="hostSpecific">
+        <input type="text" id="host10" placeholder="https://matchdomain.whatever"> <input type="text" id="host10selector" placeholder="div.customSelector"><br />
+        <input type="checkbox" id="host10forceauto"> Force auto?
+        <input type="checkbox" id="host10ignoreondemand"> Ignore on-demand?
+        <input type="checkbox" id="host10applyouter"> Apply outer?<br />
+        <div class="hostOverrides"></div>
+    </div>
+    <hr />
 </section>
 
 <script src="common.js"></script>
