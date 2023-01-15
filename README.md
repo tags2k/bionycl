@@ -3,7 +3,7 @@ Bionycl is a fully-customisable bionic reading extension for Chrome, written aft
 
 Access all the configuration via the Bionycl extension "Options".
 
-![image](https://user-images.githubusercontent.com/43980789/173246564-8e105bdf-0091-47b0-a27c-013dac1316b6.png)
+![image](https://user-images.githubusercontent.com/43980789/212533159-833fe7bd-3928-424a-adc3-b900ee3aa21e.png)
 
 ## Behaviour options
 
